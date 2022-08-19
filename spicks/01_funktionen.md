@@ -26,6 +26,8 @@ style: |
 # Python - Funktionen
 Theorie mit Beispielen
 
+To PDF: [Normal](pdfs/00_tipps_und_tricks.pdf), [Slides](pdfs/00_tipps_und_tricks_slides.pdf)
+
 ---
 
 # Inhalt
@@ -37,6 +39,7 @@ Theorie mit Beispielen
 - [Variablen Geltungsbereich (Scope)](#variablen-geltungsbereich-scope)
 - [Funktionen in Funktionen](#funktionen-in-funktionen)
 
+---
 ---
 
 ## Wieso Funktionen?

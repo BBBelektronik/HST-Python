@@ -25,16 +25,16 @@ style: |
 # Python - Tipps & Tricks
 Verschiedene Tricks und hilfreiche Sachen in Python
 
+To PDF: [Normal](pdfs/01_funktionen.pdf), [Slides](pdfs/01_funktionen_slides.pdf)
+
 ---
 
 # Inhalte
-- [Python - Tipps & Tricks](#python---tipps--tricks)
-- [Inhalte](#inhalte)
-  - [Stringformatierung](#stringformatierung)
-  - [Strings und Zahlen einlesen](#strings-und-zahlen-einlesen)
-  - [Namenskonventionen](#namenskonventionen)
-  - [Zahlen mit versch. Basen](#zahlen-mit-versch-basen)
-  
+- [Stringformatierung](#stringformatierung)
+- [Strings und Zahlen einlesen](#strings-und-zahlen-einlesen)
+- [Namenskonventionen](#namenskonventionen)
+- [Zahlen mit versch. Basen](#zahlen-mit-versch-basen)
+
 ---
 
 ## Stringformatierung
