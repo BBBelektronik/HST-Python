@@ -27,7 +27,7 @@ style: |
 **Klassen, Instanzen, UML**
 Theorie mit Beispielen
 
-To PDF: [Normal](pdfs/03_klassen_instanzen_uml.pdf), [Slides](pdfs/03_klassen_instanzen_uml.pdf)
+To PDF: [Normal](pdfs/02_klassen_instanzen_uml.pdf), [Slides](pdfs/02_klassen_instanzen_uml.pdf)
 
 ---
 
