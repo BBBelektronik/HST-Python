@@ -4,27 +4,38 @@ author: Nico Schwab
 theme: uncover
 size: 16:9
 paginate: true
-_paginate: false
-_header: '![bbb_logo_svg w:150px](Logo_BBB.svg)'
-footer: HST | Nico Schwab | BBB | nico.schwab@bbbaden.ch
+# _paginate: false
+_header: '![bbb_logo_svg w:150px](Logo_BBB_inv.svg)'
+footer: HST @ BBB by ScN
+class: invert
+style: |
+    header {
+        text-align: right
+    }
+
+    footer {
+        bottom: 10px
+    }
+
+    section {
+        font-size: 33px
+    }
+
 ---
-
-<style>
-header {
-    text-align: right
-}
-
-footer {
-    bottom: 10px
-}
-
-/* h2 {
-    font-size: 55px
-} */
-</style>
 
 # Python - Funktionen
 Theorie mit Beispielen
+
+---
+
+# Inhalt
+- [Wieso Funktionen?](#wieso-funktionen)
+- [Syntax](#syntax)
+- [Definition und Aufruf](#definition-und-aufruf)
+- [Rückgabewerte](#rückgabewerte)
+- [Defaultwerte](#defaultwerte)
+- [Variablen Geltungsbereich (Scope)](#variablen-geltungsbereich-scope)
+- [Funktionen in Funktionen](#funktionen-in-funktionen)
 
 ---
 
@@ -99,7 +110,7 @@ print(f"outside of ScopeDemo(): \t {x = }")
 
 ---
 
-## Funktionen in Funktionen in ...
+## Funktionen in Funktionen
 Try it out:
 ```python
 def outer(): # Definition outer()

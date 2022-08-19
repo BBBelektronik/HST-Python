@@ -4,33 +4,37 @@ author: Nico Schwab
 theme: uncover
 size: 16:9
 paginate: true
-_paginate: false
-_header: '![bbb_logo_svg w:150px](Logo_BBB.svg)'
-footer: HST | Nico Schwab | BBB | nico.schwab@bbbaden.ch
+# _paginate: false
+_header: '![bbb_logo_svg w:150px](Logo_BBB_inv.svg)'
+footer: HST @ BBB by ScN
+class: invert
+style: |
+    header {
+        text-align: right
+    }
 
+    footer {
+        bottom: 10px
+    }
+
+    section {
+        font-size: 33px
+    }
 ---
-
-<style>
-header {
-    text-align: right
-}
-
-footer {
-    bottom: 10px
-}
-
-/* h2 {
-    font-size: 55px
-} */
-
-section {
-    font-size: 33px
-}
-</style>
 
 # Python - Tipps & Tricks
 Verschiedene Tricks und hilfreiche Sachen in Python
 
+---
+
+# Inhalte
+- [Python - Tipps & Tricks](#python---tipps--tricks)
+- [Inhalte](#inhalte)
+  - [Stringformatierung](#stringformatierung)
+  - [Strings und Zahlen einlesen](#strings-und-zahlen-einlesen)
+  - [Namenskonventionen](#namenskonventionen)
+  - [Zahlen mit versch. Basen](#zahlen-mit-versch-basen)
+  
 ---
 
 ## Stringformatierung
