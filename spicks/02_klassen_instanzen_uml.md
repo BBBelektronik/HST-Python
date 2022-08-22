@@ -82,6 +82,7 @@ Try it yourself:
 ```python
 # Klasse mit Initialiser (vgl. Konstruktor bei C++)
 class ClassWithAttribut:
+    # Die Methode __init__(self) ist der Initialiser
     def __init__(self): # <-- self muss immer rein
         self.attribut = "z.B. ein String"
 
@@ -116,16 +117,17 @@ instance.say_hi()
 Try it yourself:
 ```python
 # Klasse definieren
-class Person:
-    def __init__(self, name):
-    self._name = name
+class Person:
+    def __init__(self, name, age):
+    self._name = name
+    self._age = age
 
     # Methode definieren
-    def greet(self):
-        print("Hi", self._name)
+    def greet(self):
+        print(f"Hi {self._age} year old {self._name}")
 
 # Instanz erstellen (mit Argument)
-john = Person("John")
+john = Person("John", 37)
 
 # Methode ausführen
 john.greet()
@@ -138,14 +140,14 @@ Definiert die Zugriffsregelung von Attributen und Methoden eines Objektes.
 |                     |             private              | public                             |
 | :-----------------: | :------------------------------: | ---------------------------------- |
 | **Zugriff erlaubt** | **nur** innerhalb einer Instanz. | **auch** ausserhalb einer Instanz. |
-|    **Attribut**     |           `_variable`            | `variable`                         |
+|    **Attribut**     |           `_attribut`            | `attribut`                         |
 |     **Methode**     |          `_method(...)`          | `method(...)`                      |
 
 ---
 
 ## Beispiel private/public Attribute
 ```py
-class A:
+class A:
     def __init__(self):
         self.public_attr    = "public Attribut"
         self._private_attr  = "private Attribut"
@@ -163,16 +165,16 @@ print(a.get_private()) # OK! Why?
 ## Beispiel private/public Methoden
 
 ```py
-class A:
+class A:
     def foo(self):
-        pass
+        print("I am public!")
 
     def _fuu(self):
-        pass
+        print("I am private: Don't touch this!")
 
 a = A()
 a.foo() # OK
-a._fuu()) # NOT OK! Why?
+a._fuu() # NOT OK! Why?
 ```
 
 ---
@@ -216,3 +218,5 @@ print(BBBStudent.count)
 - **Klassendiagramm** > Gibt eine Übersicht über Programmstruktur
 
 ![uml h:300px](uml_klasse.png)
+
+*Dies ist das Klassendiagramm des [Klassenbeispiels](#klasse-beispiel).*

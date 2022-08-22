@@ -72,11 +72,11 @@ sayHello('Din Djarin', 'Mandolor')
 ```python
 # One return value
 def a_function(number):
-    return number * 2
+    return number * 2
 
-# or multiple return values
+# or multiple return values
 
-def another_function(bla, blib):
+def another_function(bla, blib):
     # do something to bla and blib
     return bla, blib
 ```
@@ -86,12 +86,12 @@ def another_function(bla, blib):
 ## Defaultwerte
 Try it out:
 ```python
-def mult3(n1, n2=5, n3=1):
-    return n1 * n2 * n3
+def mult3(n1, n2=5, n3=1):
+    return n1 * n2 * n3
 
 print(mult3(4))
-print(mult3(4, 2))
-print(mult3(4, n3=2))
+print(mult3(4, 2))
+print(mult3(4, n3=2))
 
 # Was ist der Output?
 ```
@@ -116,14 +116,14 @@ print(f"outside of ScopeDemo(): \t {x = }")
 ## Funktionen in Funktionen
 Try it out:
 ```python
-def outer(): # Definition outer()
+def outer(): # Definition outer()
 
-    def inner(): # Definition inner()
-        print("inner") # Inhalt inner()
+    def inner(): # Definition inner()
+        print("inner") # Inhalt inner()
 
-    print("outer") # Inhalt outer()
+    print("outer") # Inhalt outer()
 
-    inner() # Aufruf inner()
+    inner() # Aufruf inner()
 
 outer() # Aufruf outer()
 

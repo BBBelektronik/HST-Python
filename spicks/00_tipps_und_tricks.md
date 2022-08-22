@@ -40,11 +40,11 @@ To PDF: [Normal](pdfs/01_funktionen.pdf), [Slides](pdfs/01_funktionen_slides.pdf
 ## Stringformatierung
 Strings mit Variablen lassen sich geschickt formatieren, try it:
 ```python
-s = "hi"
-i = 4
-h = 0x20
+s = "hi"
+i = 4
+h = 0x20
 
-print(f"str: {s}; int: {i}; hex: {h:#x}")
+print(f"str: {s}; int: {i}; hex: {h:#x}")
 ```
 Oder man nutzt Abkürzungen, try it:
 ```python
@@ -91,9 +91,9 @@ MAX_V = 500     # Konstanten GROSS
 ## Zahlen mit versch. Basen
 In Python lassen sich einfach Zahlen in verschiedenen Zahlensystemen eingeben.
 ```python
-dezimal = 4                         # base 10
-hexadez = 0x20                      # base 16
-binaer  = 0b100101                  # base 2
-oktal   = 0o23327                   # base 8
-n_tal   = int("123456789", base=n)  # base n (frei wählbar)
+dezimal = 4                         # base 10
+hexadez = 0x20                      # base 16
+binaer  = 0b100101                  # base 2
+oktal   = 0o23327                   # base 8
+n_tal   = int("123456789", base=n)  # base n (frei wählbar)
 ```
