@@ -43,6 +43,7 @@ To PDF: [Normal](pdfs/02_klassen_instanzen_uml.pdf), [Slides](pdfs/02_klassen_in
 - [Beispiel private/public Methoden](#beispiel-privatepublic-methoden)
 - [Instanz- und Klassenattribute](#instanz--und-klassenattribute)
 - [Instanz-/Klassenattribute Beispiel](#instanz-klassenattribute-beispiel)
+- [Typ/Klasse überprüfen](#typklasse-überprüfen)
 - [UML Klassendiagramm](#uml-klassendiagramm)
 
 ---
@@ -210,6 +211,21 @@ print(BBBStudent.count)
 student2 = BBBStudent("Olivier")
 print(BBBStudent.count)
 ```
+
+---
+
+## Typ/Klasse überprüfen
+Um zu prüfen, von welcher Klasse ein Objekt eine Instanz ist, können wir die Funktion `isinstance(obj, type)` verwenden.
+```py
+a = 2
+if isinstance(a, int): # Prüft ob int
+    print("a is an int")
+if isinstance(a, float): # Prüft ob float
+    print("a is a float")
+if isinstance(a, (int, float)): # Prüft ob int ODER float
+    print("a is an int or a float")
+```
+Dies funktioniert für die eingebauten Python-Typen (`int`, `float`, `str` usw.) sowie für beliebige andere Klassen.
 
 ---
 
