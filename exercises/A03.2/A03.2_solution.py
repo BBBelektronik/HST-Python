@@ -132,7 +132,7 @@ class Polygon:
         # 1. Überprüft, ob point vom Typ Point ist
         # 2. Falls ja: Fügt der Liste 'points' den Punkt 'point' hinzu (Tipp: .append(...))
         # 3. Falls nein: Führt 'raise ValueError' aus (ohne Anführungszeichen)
-         if isinstance(point, Point):
+        if isinstance(point, Point):
             self.points.append(point)
         else:
             raise ValueError
