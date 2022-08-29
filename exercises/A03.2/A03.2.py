@@ -46,17 +46,18 @@ class Point:
 
     def get_distance(self, to_point):
         # 1. Prüft, ob to_point vom Typ Point ist
-        # 2. Falls ja: Berechnet die Distanz zwischen sich selber und einem anderen Punkt und gibt diese zurück.
+        # 2. Falls ja: Berechnet die Distanz zwischen sich selber und einem anderen Punkt 'to_point' und gibt diese zurück.
         # 3. Falls nein: Führt 'raise ValueError' aus (ohne Anführungszeichen)
         # Tipp: Die Methode math.sqrt() von der Math-Library (import math) könnte hilfreich sein.
         pass
 
     def get_angle(self, to_point):
         # 1. Prüft, ob to_point vom Typ Point ist
-        # 2. Falls ja: Berechnet den Winkel, der eine Linie vom Punkt zu to_point gegenüber der X-Achse hat
+        # 2. Falls ja: Berechnet den Winkel, der eine Linie vom Punkt 'self' zum Punkt 'to_point' gegenüber der X-Achse hat
+        #    Der Winkel wird in einem Koordinatensystem immer im Gegenuhrzeigersinn gemessen.
         # 3. Falls nein: Führt 'raise ValueError' aus (ohne Anführungszeichen)
         # Tipp 1: math.degrees(..) konvertiert von Radian zu Grad
-        # Tipp 2: math.atan2(..) rechnet den Arcus-Tangenz
+        # Tipp 2: math.atan2(delta_y, delta_x) rechnet den Arcus-Tangenz
         pass
 
 
@@ -67,7 +68,7 @@ class Polygon:
 
     def add_point(self, point):
         # 1. Überprüft, ob point vom Typ Point ist
-        # 2. Falls ja: Fügt der Liste 'points' den Punkt 'point' hinzu (Tipp: .append(...))
+        # 2. Falls ja: Hängt der Liste 'points' den Punkt 'point' an (Tipp: .append(...) = anhängen)
         # 3. Falls nein: Führt 'raise ValueError' aus (ohne Anführungszeichen)
         pass
 
@@ -107,7 +108,7 @@ class Polygon:
         # Schwierigkeit: VERY HARD
         pass
 
-    def is_point_in_polygon(self, point):
+    def is_inside(self, point):
         # ZUSATZAUFGABE
         # Überprüft, ob Punkt point innerhalb es Polygons liegt
         # Schwierigkeit: EXTREMELY HARD

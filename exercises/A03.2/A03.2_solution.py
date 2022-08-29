@@ -21,6 +21,10 @@ class Point:
         return self.y
         pass
 
+    def get_xy(self):
+        # Returns point as tuple
+        return (self.x, self.y)
+
     def set_x(self, x):
         # 1. Überprüft, ob x numerisch ist.
         # 2. Falls ja: Speichert die x-Koordinate
@@ -100,6 +104,86 @@ class Point:
         p.randomize()
         return p
 
+    INT_MAX = 10000
+
+    @staticmethod
+    def onSegment(p, q, r) -> bool:
+        # Given three collinear points p, q, r,
+        # the function checks if point q lies
+        # on line segment 'pr'
+        if not (isinstance(p, Point) and isinstance(q, Point) and isinstance(r, Point)):
+            raise ValueError
+
+        if ((q.x <= max(p.x, r.x)) and
+            (q.x >= min(p.x, r.x)) and
+            (q.y <= max(p.y, r.y)) and
+                (q.y >= min(p.y, r.y))):
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def orientation(p, q, r) -> int:
+        # To find orientation of ordered triplet (p, q, r).
+        # The function returns following values
+        # 0 --> p, q and r are collinear
+        # 1 --> Clockwise
+        # 2 --> Counterclockwise
+        if not (isinstance(p, Point) and isinstance(q, Point) and isinstance(r, Point)):
+            raise ValueError
+
+        val = (((q.y - p.y) *
+                (r.x - q.x)) -
+               ((q.x - p.x) *
+                (r.y - q.y)))
+
+        if val == 0:
+            return 0
+        if val > 0:
+            return 1  # Collinear
+        else:
+            return 2  # Clock or counterclock
+
+    @staticmethod
+    def doIntersect(p1, q1, p2, q2):
+
+        if not (isinstance(p1, Point) and isinstance(q1, Point) and isinstance(p2, Point) and isinstance(q2, Point)):
+            raise ValueError
+
+        # Find the four orientations needed for
+        # general and special cases
+        o1 = Point.orientation(p1, q1, p2)
+        o2 = Point.orientation(p1, q1, q2)
+        o3 = Point.orientation(p2, q2, p1)
+        o4 = Point.orientation(p2, q2, q1)
+
+        # General case
+        if (o1 != o2) and (o3 != o4):
+            return True
+
+        # Special Cases
+        # p1, q1 and p2 are collinear and
+        # p2 lies on segment p1q1
+        if (o1 == 0) and (Point.onSegment(p1, p2, q1)):
+            return True
+
+        # p1, q1 and p2 are collinear and
+        # q2 lies on segment p1q1
+        if (o2 == 0) and (Point.onSegment(p1, q2, q1)):
+            return True
+
+        # p2, q2 and p1 are collinear and
+        # p1 lies on segment p2q2
+        if (o3 == 0) and (Point.onSegment(p2, p1, q2)):
+            return True
+
+        # p2, q2 and q1 are collinear and
+        # q1 lies on segment p2q2
+        if (o4 == 0) and (Point.onSegment(p2, q1, q2)):
+            return True
+
+        return False
+
     def __repr__(self):
         return f"({self.x}/{self.y})"
 
@@ -123,6 +207,8 @@ class Point:
 
 
 class Polygon:
+    INT_MAX = 1e21
+
     def __init__(self):
         # Erstellt eine leere Liste namens 'points' als Attribut
         self.points = []
@@ -190,11 +276,72 @@ class Polygon:
         # Schwierigkeit: VERY HARD
         pass
 
-    def is_point_in_polygon(self, point):
+    def is_inside(self, point):
+        pass
+
+        # Returns true if the point p lies
+    # inside the polygon[] with n vertices
+    def is_inside(self, point) -> bool:
         # ZUSATZAUFGABE
+        # Source: https://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
         # Überprüft, ob Punkt point innerhalb es Polygons liegt
         # Schwierigkeit: EXTREMELY HARD
-        pass
+
+        if not isinstance(point, Point):
+            raise ValueError
+
+        n = len(self.points)
+        p = point
+
+        # There must be at least 3 vertices
+        # in polygon
+        if n < 3:
+            return False
+
+        # Create a point for line segment
+        # from p to infinite
+        extreme = Point(self.INT_MAX, p.y)
+
+        # To count number of points in polygon
+        # whose y-coordinate is equal to
+        # y-coordinate of the point
+        decrease = 0
+        count = i = 0
+
+        while True:
+            next = (i + 1) % n
+
+            if(self.points[i].y == p.y):
+                decrease += 1
+
+            # Check if the line segment from 'p' to
+            # 'extreme' intersects with the line
+            # segment from 'polygon[i]' to 'polygon[next]'
+            if (Point.doIntersect(self.points[i],
+                                  self.points[next],
+                                  p, extreme)):
+
+                # If the point 'p' is collinear with line
+                # segment 'i-next', then check if it lies
+                # on segment. If it lies, return true, otherwise false
+                if Point.orientation(self.points[i], p,
+                                     self.points[next]) == 0:
+                    return Point.onSegment(self.points[i], p,
+                                           self.points[next])
+
+                count += 1
+
+            i = next
+
+            if (i == 0):
+                break
+
+        # Reduce the count by decrease amount
+        # as these points would have been added twice
+        count -= decrease
+
+        # Return true if count is odd, false otherwise
+        return (count % 2 == 1)
 
 
 viereck = Polygon()
@@ -217,3 +364,6 @@ start = time.time()
 print(n_eck.has_unique_points())
 end = time.time()
 print(f"Took {round(end - start, 3)}s")
+
+
+print(f"Inside?: {viereck.is_inside(Point(2, 3))}")
