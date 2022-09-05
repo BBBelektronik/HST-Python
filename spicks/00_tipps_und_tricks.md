@@ -30,10 +30,79 @@ To PDF: [Normal](pdfs/01_funktionen.pdf), [Slides](pdfs/01_funktionen_slides.pdf
 ---
 
 # Inhalte
+- [Listen](#listen)
+- [if..elif..else](#ifelifelse)
+- [for/while-Schlaufen](#forwhile-schlaufen)
+- [Daten einlesen mit `input()`](#daten-einlesen-mit-input)
 - [Stringformatierung](#stringformatierung)
 - [Strings und Zahlen einlesen](#strings-und-zahlen-einlesen)
 - [Namenskonventionen](#namenskonventionen)
 - [Zahlen mit versch. Basen](#zahlen-mit-versch-basen)
+
+---
+
+## Listen
+```py
+# Liste = Array (einfach besser)
+names = ['Fiedler', 'Lanza', 'Conte', 'Schmid']
+
+# Ganze Liste ausgeben
+print(names)
+
+# Via Index auf Element zugreifen
+print(names[0])
+
+# Negative Indizes beginnen am Ende der Liste
+print(names[-1])
+
+# Man kann auch Bereiche einer Liste betrachten.
+print(names[1:3])
+
+# Ein Element ans Ende der Liste anhängen
+names.append('Ernst')
+print(names)
+```
+
+---
+
+## if..elif..else
+```python
+x = 3
+if x < 3:
+    print("x < 3")
+elif x > 3:
+    print("x > 3")
+else:
+    print("x = 3")
+```
+---
+
+## for/while-Schlaufen
+```py
+# for-Schleife
+for i in range(3):
+    print(str(i))
+
+# for with iterator
+numbers = [1, 5, 22, 666]
+for number in numbers:
+    number = number ** 2
+# while-Schleife
+x = 0
+while x < 10:
+    print(f"x = {x}")
+    x += 1
+```
+
+---
+
+## Daten einlesen mit `input()`
+```python
+name = input("Name: ")  # Rick Sanchez
+age = int(input("Age: "))    # 70
+print(f"My name is {name}, and I’m {age} years old.")
+# ==> My name is Rick Sanchez, and I’m 70 years old.
+```
 
 ---
 
