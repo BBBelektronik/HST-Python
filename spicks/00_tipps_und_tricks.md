@@ -32,7 +32,9 @@ To PDF: [Normal](pdfs/01_funktionen.pdf), [Slides](pdfs/01_funktionen_slides.pdf
 # Inhalte
 - [Listen](#listen)
 - [if..elif..else](#ifelifelse)
-- [for/while-Schlaufen](#forwhile-schlaufen)
+- [`for/while`-Schleifen](#forwhile-schleifen)
+- [`for`-Schleifen mit Listen 1](#for-schleifen-mit-listen-1)
+- [`for`-Schleifen mit Listen 2](#for-schleifen-mit-listen-2)
 - [Daten einlesen mit `input()`](#daten-einlesen-mit-input)
 - [Stringformatierung](#stringformatierung)
 - [Strings und Zahlen einlesen](#strings-und-zahlen-einlesen)
@@ -44,20 +46,18 @@ To PDF: [Normal](pdfs/01_funktionen.pdf), [Slides](pdfs/01_funktionen_slides.pdf
 ## Listen
 ```py
 # Liste = Array (einfach besser)
+# Eine leere Liste erstellen:
+leere_liste = []
+# Eine vorgefüllte Liste erstellen:
 names = ['Fiedler', 'Lanza', 'Conte', 'Schmid']
-
 # Ganze Liste ausgeben
 print(names)
-
 # Via Index auf Element zugreifen
 print(names[0])
-
 # Negative Indizes beginnen am Ende der Liste
 print(names[-1])
-
 # Man kann auch Bereiche einer Liste betrachten.
 print(names[1:3])
-
 # Ein Element ans Ende der Liste anhängen
 names.append('Ernst')
 print(names)
@@ -77,21 +77,49 @@ else:
 ```
 ---
 
-## for/while-Schlaufen
+## `for/while`-Schleifen
 ```py
 # for-Schleife
 for i in range(3):
     print(str(i))
 
-# for with iterator
-numbers = [1, 5, 22, 666]
-for number in numbers:
-    number = number ** 2
 # while-Schleife
 x = 0
 while x < 10:
     print(f"x = {x}")
     x += 1
+```
+
+---
+
+## `for`-Schleifen mit Listen 1
+Try it yourself:
+```python
+# for Schleife um eine Liste
+numbers = [1, 4, 5, 11]
+for number in numbers:
+    # In jedem Durchlauf ist das nächste Element
+    # der Liste in der Variable 'number' zu finden.
+    number = number ** 2
+    print(number)
+
+# Obige Schleife gibt aus: "1 16 25 121"
+# Also jedes Element der Liste hoch 2 (** 2)
+```
+
+---
+
+## `for`-Schleifen mit Listen 2
+Try it yourself:
+```python
+numbers = [1, 2, 3, 4, 5]
+for index, number in enumerate(numbers):
+    # Wie 'for number in numbers', einfach haben wir hier
+    # bei jedem Durchlauf noch die Nummer des Durchlaufs
+    print(number + numbers[index - 1]) # Wir rechnen immer die aktuelle Zahl
+                                       # plus die in der Liste vornedran.
+
+# Output: 6 3 5 7 9 (6 = 1 + 5, 23 = 1 + 2, usw.)
 ```
 
 ---
