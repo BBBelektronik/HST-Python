@@ -32,25 +32,48 @@ To PDF: [Normal](pdfs/04_file_io.pdf), [Slides](pdfs/04_file_io_slides.pdf)
 ---
 
 # Inhalt
-- [Datei öffnen](#datei-öffnen)
+- [Datei öffen und schliessen](#datei-öffen-und-schliessen)
+- [File-Modi](#file-modi)
 - [CSV-Datei einlesen](#csv-datei-einlesen)
 - [In Datei schreiben](#in-datei-schreiben)
 
 ---
 
-## Datei öffnen
+## Datei öffen und schliessen
 Try it yourself:
 ```python
-file = open('filename.csv', 'r')
-    f.read()
+file = open(filename, 'r')  # Open in read-only mode
+print(file.read())          # Do something with file
+file.close()                # Close file (important!)
 ```
+Or use `with` for automatic closing of file:
+```python
+with open(filename, 'r') as file
+    print(file.read())
+``` 
+
+---
+
+## File-Modi
+Die Funktion `open(filename, mode)` nimmt als zweiter Parameter (`mode`) verschiedene Modi.
+
+Die wichtigsten ([es gibt noch mehr](https://www.geeksforgeeks.org/open-a-file-in-python/)):
+
+| `mode` | Beschreibung  |
+| ------ | ------------- |
+| `'r'`  | Read          |
+| `'w'`  | Write\*, \*\* |
+| `'a'`  | Append\*      |
+
+\*Erstellt die Datei falls nicht vorhanden.
+\*\*Überschreibt eine bestehende Datei!
 
 ---
 ## CSV-Datei einlesen
 Try it yourself:
 ```python
 import csv
-with open('filename.csv') as f:
+with open(filename) as f:
     csv_file = csv.reader(f)
     print(csv_file)
     # csv_file enthält den Dateiinhalt in einer
