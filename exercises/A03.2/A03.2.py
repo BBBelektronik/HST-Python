@@ -57,7 +57,16 @@ class Point:
         #    Der Winkel wird in einem Koordinatensystem immer im Gegenuhrzeigersinn gemessen.
         # 3. Falls nein: Führt 'raise ValueError' aus (ohne Anführungszeichen)
         # Tipp 1: math.degrees(..) konvertiert von Radian zu Grad
-        # Tipp 2: math.atan2(delta_y, delta_x) rechnet den Arcus-Tangenz
+        # Tipp 2: math.atan2(..) rechnet den Arcus-Tangenz
+        pass
+
+    def get_angle2points(self, p1, p2):
+        # 1. Prüft, ob p1 un p2 vom Typ Point sind
+        # 2. Falls ja: Berechnet den Winkel P1-SELF-P2 (also den Winkel, den die Strecken P1-SELF und SELF-P2 einfassen).
+        # 3. Falls nein: Führt 'raise ValueError' aus (ohne Anführungszeichen)
+        # 4. Gibt IMMER die positive Variante des Winkels zurück (z.B. wenn Winkel = -45 --> Rückgabewert = 360 - 45 = 315)
+        # Tipp 1: Sie haben schon eine Funktion, die einen Winkel berechnet.
+        #         Wie können Sie diese wiederverwenden?
         pass
 
 
@@ -85,9 +94,20 @@ class Polygon:
         # (addiert also die Distanzen zw. P0 und P1, P1 und P2, ..., PN und P0)
         pass
 
-    def get_longest_side(self):
-        # Findet die längste Seite des Polygons und gibt sie zurück
-        pass
+    def get_inside_angles(self):
+        # Berechnet alle Innenwinkel des Polygons, also jeweils bei bei jedem Punkt der Winkel zw. den anliegenden Seiten,
+        # und gibt eine Liste mit all diesen Winkeln zurück.
+        # Tipp: Mit welcher Funktion lässt sich der Winkel zw. drei Punkten berechnen?
+        # Achtung: Je nach dem in welche Richtung das Polygon dreht kriegen Sie die Aussenwinkel.
+        # Mit der Formel sum(alle_winkel) = (n - 2) * 180 können Sie überprüfen, ob es sich um Innenwinkel handelt. Falls nicht, machen Sie daraus Innenwinkel.
+        return []
+
+    def is_convex(self):
+        # Überprüft, ob das Polygon konvex oder konkav ist.
+        # Konvex: Alle Innenwinkel sind <= 180 Grad
+        # Konkav: Mindestens ein Innenwinkel ist > 180 Grad
+        # return: True, falls konvex, False falls konkav.
+        return True
 
     def has_unique_points(self):
         # ZUSATZAUFGABE
@@ -105,7 +125,8 @@ class Polygon:
     def is_regular(self):
         # ZUSATZAUFGABE
         # Überprüft, ob das Polygon ein reguläres Polygon ist
-        # Schwierigkeit: VERY HARD
+        # Bei einem regulären Polygon sind alle Seiten gleich lang und alle Winkel gleich gross.
+        # Schwierigkeit: EASY
         pass
 
     def is_inside(self, point):
