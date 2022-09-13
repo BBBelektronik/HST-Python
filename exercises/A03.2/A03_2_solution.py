@@ -317,6 +317,9 @@ class Polygon:
         else:
             return 1  # konvex
 
+    def is_regular(self):
+        return True if self.get_polygon_type() == 0 else False
+
     def has_unique_points(self):
         # ZUSATZAUFGABE
         # Überprüft, ob alle Punkte des Polygons einzigartig sind (also ob es keinen Punkt zwei Mal gibt)
