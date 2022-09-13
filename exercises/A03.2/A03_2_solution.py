@@ -241,6 +241,9 @@ class Polygon:
         # Gibt zurück, wie viele Ecken das Polygon hat
         return len(self.points)
 
+    def get_num_points(self):
+        return self.get_n()
+
     def clear_points(self):
         # Löscht alle gespeicherten Punkte
         self.points = []
@@ -402,30 +405,30 @@ class Polygon:
         return (count % 2 == 1)
 
 
-poly = Polygon()
-A = Point(0, 0)
-B = Point(2, 0)
-C = Point(2.5, 2.5)
-D = Point(0, 10.5)
-E = Point(-1, 2)
-poly.add_point(A)
-poly.add_point(E)
-poly.add_point(D)
-poly.add_point(C)
-poly.add_point(B)
+# poly = Polygon()
+# A = Point(0, 0)
+# B = Point(2, 0)
+# C = Point(2.5, 2.5)
+# D = Point(0, 10.5)
+# E = Point(-1, 2)
+# poly.add_point(A)
+# poly.add_point(E)
+# poly.add_point(D)
+# poly.add_point(C)
+# poly.add_point(B)
 
-print(f"{poly.get_inside_angles() = }")
-print(f"{poly.is_convex() = }")
-print(f"{poly.get_area() = }")
+# print(f"{poly.get_inside_angles() = }")
+# print(f"{poly.is_convex() = }")
+# print(f"{poly.get_area() = }")
 
-complex_poly = Polygon()
-complex_poly.add_point(Point(4.2, 0.2))
-complex_poly.add_point(Point(5.8, 0.2))
-complex_poly.add_point(Point(4, 2))
-complex_poly.add_point(Point(5.8, 1.8))
+# complex_poly = Polygon()
+# complex_poly.add_point(Point(4.2, 0.2))
+# complex_poly.add_point(Point(5.8, 0.2))
+# complex_poly.add_point(Point(4, 2))
+# complex_poly.add_point(Point(5.8, 1.8))
 
 # print(f"{complex_poly.get_inside_angles() = }")
-print(f"{complex_poly.get_area() = }")
+# print(f"{complex_poly.get_area() = }")
 # print(poly.has_unique_points())
 # print(poly.points[1] - poly.points[2])
 # print(poly.points[1] * 10)
