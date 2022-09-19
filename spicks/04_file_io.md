@@ -31,15 +31,16 @@ To PDF: [Normal](pdfs/04_file_io.pdf), [Slides](pdfs/04_file_io_slides.pdf)
 ---
 
 # Inhalt
-- [Datei öffen und schliessen](#datei-öffen-und-schliessen)
+- [Datei öffnen und schliessen](#datei-öffnen-und-schliessen)
 - [File-Modi](#file-modi)
+- [Ganze Datei ausgeben](#ganze-datei-ausgeben)
 - [In Datei schreiben](#in-datei-schreiben)
 - [CSV-Datei einlesen](#csv-datei-einlesen)
 
 ---
 
-## Datei öffen und schliessen
-Eine geöffnete Datei muss immmer geschlossen werden!
+## Datei öffnen und schliessen
+Eine geöffnete Datei muss immer geschlossen werden!
 ```python
 file = open(filename, 'r')  # Open in read-only mode
 print(file.read())          # Do something with file
@@ -70,7 +71,7 @@ Die wichtigsten ([es gibt noch mehr](https://www.geeksforgeeks.org/open-a-file-i
 
 ---
 
-# Ganze Datei ausgeben
+## Ganze Datei ausgeben
 Ausgabe Zeile für Zeile
 ```python
 with open(filename, 'r') as file:
