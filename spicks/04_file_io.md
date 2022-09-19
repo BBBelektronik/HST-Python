@@ -23,8 +23,7 @@ style: |
 
 ---
 
-# Python - OOP
-**File IO**
+# Python - File IO
 Theorie mit Beispielen
 
 To PDF: [Normal](pdfs/04_file_io.pdf), [Slides](pdfs/04_file_io_slides.pdf)
@@ -34,13 +33,13 @@ To PDF: [Normal](pdfs/04_file_io.pdf), [Slides](pdfs/04_file_io_slides.pdf)
 # Inhalt
 - [Datei öffen und schliessen](#datei-öffen-und-schliessen)
 - [File-Modi](#file-modi)
-- [CSV-Datei einlesen](#csv-datei-einlesen)
 - [In Datei schreiben](#in-datei-schreiben)
+- [CSV-Datei einlesen](#csv-datei-einlesen)
 
 ---
 
 ## Datei öffen und schliessen
-Try it yourself:
+Eine geöffnete Datei muss immmer geschlossen werden!
 ```python
 file = open(filename, 'r')  # Open in read-only mode
 print(file.read())          # Do something with file
@@ -59,14 +58,49 @@ Die Funktion `open(filename, mode)` nimmt als zweiter Parameter (`mode`) verschi
 
 Die wichtigsten ([es gibt noch mehr](https://www.geeksforgeeks.org/open-a-file-in-python/)):
 
-| `mode` | Beschreibung  |
-| ------ | ------------- |
-| `'r'`  | Read          |
-| `'w'`  | Write\*, \*\* |
-| `'a'`  | Append\*      |
+| `mode` | Beschreibung    |
+| ------ | --------------- |
+| `'r'`  | Read            |
+| `'w'`  | Write [1], [2]  |
+| `'a'`  | Append [1], [3] |
 
-\*Erstellt die Datei falls nicht vorhanden.
-\*\*Überschreibt eine bestehende Datei!
+[1] Erstellt die Datei falls nicht vorhanden.
+[2] Überschreibt eine bestehende Datei!
+[3] Hängt ans Ende einer Datei an falls vorhanden.
+
+---
+
+# Ganze Datei ausgeben
+Ausgabe Zeile für Zeile
+```python
+with open(filename, 'r') as file:
+    for line in file:
+        print(line)
+```
+
+---
+
+## In Datei schreiben
+```python
+# Öffnet eine Datei. Erstellt sie, falls nicht vorhanden
+file = open(filename, 'w')
+
+# Write characters
+file.write("Hello File")
+# Linebreak
+file.write("Newline: \n")
+
+# Write multiple lines from listfile
+file.writelines(["line1", "line2", "..."])
+
+# Close file (important!)
+file.close()
+```
+oder natürlich auch mit `open(...)`:
+```python
+with open(filename, 'w') as file:
+    ...
+```
 
 ---
 ## CSV-Datei einlesen
@@ -83,6 +117,3 @@ with open(filename) as f:
     for line in csv_file:
         print(line)
 ```
----
-
-## In Datei schreiben
