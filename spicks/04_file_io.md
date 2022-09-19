@@ -36,6 +36,9 @@ To PDF: [Normal](pdfs/04_file_io.pdf), [Slides](pdfs/04_file_io_slides.pdf)
 - [Ganze Datei ausgeben](#ganze-datei-ausgeben)
 - [In Datei schreiben](#in-datei-schreiben)
 - [CSV-Datei einlesen](#csv-datei-einlesen)
+- [String aufteilen](#string-aufteilen)
+- [Substring in String](#substring-in-string)
+- [Noch mehr String-Methoden](#noch-mehr-string-methoden)
 
 ---
 
@@ -46,9 +49,9 @@ file = open(filename, 'r')  # Open in read-only mode
 print(file.read())          # Do something with file
 file.close()                # Close file (important!)
 ```
-Or use `with` for automatic closing of file:
+Oder man verwendet `with`, da wird die Datei automatisch wieder geschlossen wenn der Block verlassen wird:
 ```python
-with open(filename, 'r') as file
+with open(filename, 'r') as file:
     print(file.read())
 ``` 
 
@@ -118,3 +121,39 @@ with open(filename) as f:
     for line in csv_file:
         print(line)
 ```
+
+---
+
+## String aufteilen
+`split()` trennt bei Whitespaces (Space, Tab, usw.)
+`split('o')` trennt bei Zeichen, hier z.B. bei 'o'
+```python
+a_string = "ET wants to phone home"
+
+print(a_string.split())     # --> ['ET', 'wants', 'to', 'phone', 'home']
+print(a_string.split('o'))  # --> ['ET wants t', ' ph', 'ne h', 'me']
+
+```
+
+---
+
+## Substring in String
+Überprüfen, ob Sub-String in String drin ist.
+```python
+a_string = "ET wants to phone home"
+if "phone" in a_string:
+    print("Phone is in string") # <-- Das wird ausgeführt
+else:
+    print("Phone is not in string")
+```
+
+---
+
+## Noch mehr String-Methoden
+[Unter diesem Link](https://www.w3schools.com/python/python_ref_string.asp) finden Sie noch viele weitere String-Methoden. Nützlich sind unter anderem:
+|                |              |
+| -------------- | ------------ |
+| `split()`      | `replace()`  |
+| `startswith()` | `endswith()` |
+| `upper()`      | `lower()`    |
+| `split()`      | `replace()`  |
