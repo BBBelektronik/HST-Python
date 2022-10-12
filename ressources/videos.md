@@ -11,23 +11,23 @@ Die Idee ist nicht, dass Sie alle diese Videos durchschauen. Klicken Sie sich ma
 [![Alt text](https://img.youtube.com/vi/RBpK8C3N-Y8/0.jpg)](https://www.youtube.com/watch?v=RBpK8C3N-Y8)
 
 ## *PLAYLIST* - Python und OOP
-| Sprache | Dauer               |                        | Detailbeschreibung                                                                                                                          |
+| Sprache | Dauer               | Inhalt                 | Detailbeschreibung                                                                                                                          |
 | ------- | ------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | Deutsch | ca. 10min pro Video | Python Grundlagen, OOP | Diese Playlist enthält verschiedene Videos, von Python Grundlagen bis zu OOP Konzepten mit Python. Orientieren Sie sich an den Videotiteln. |
 
 [![Alt text](https://img.youtube.com/vi/oxXAb8IikHM/0.jpg)](https://www.youtube.com/playlist?list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB)
 
 ## *VIDEO* - OOP Klassen/Instanzen mit Python
-| Sprache | Dauer | Inhalt | Detailbeschreibung |
-| ------- | ----- |OOP (mit Python), Klassen, Instanzen |---------------------------------------------------------------------------- |
-| Deutsch | ca. 11min | |Dieses Video zeigt, warum und wie man Klassen und Instanzen in Python nutzt. |
+| Sprache | Dauer     | Inhalt                               | Detailbeschreibung                                                           |
+| ------- | --------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| Deutsch | ca. 11min | OOP (mit Python), Klassen, Instanzen | Dieses Video zeigt, warum und wie man Klassen und Instanzen in Python nutzt. |
 
 [![Alt text](https://img.youtube.com/vi/i1uQgU7NOCw/0.jpg)](https://www.youtube.com/watch?v=i1uQgU7NOCw)
 
 ## *VIDEO* - OOP Vererbung mit Python
-| Sprache | Dauer | Inhalt | Detailbeschreibung |
-| ------- | ----- |OOP (mit Python), Vererbung |-------------------------------------------------------------- |
-| Deutsch | ca. 10min | |Dieses Video zeigt, wie man Vererbung in Python implementiert. |
+| Sprache | Dauer     | Inhalt                      | Detailbeschreibung                                             |
+| ------- | --------- | --------------------------- | -------------------------------------------------------------- |
+| Deutsch | ca. 10min | OOP (mit Python), Vererbung | Dieses Video zeigt, wie man Vererbung in Python implementiert. |
 
 [![Alt text](https://img.youtube.com/vi/0SmolVI6xCg/0.jpg)](https://www.youtube.com/watch?v=0SmolVI6xCg)
 
