@@ -1,0 +1,2 @@
+pyserial==latest
+guizero==latest
