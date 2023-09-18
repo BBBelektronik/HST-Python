@@ -307,7 +307,7 @@ class Polygon:
         # Schwierigkeit: EASY
         angles = self.get_inside_angles()
         if angles == None:
-            return 3  # überschlagen
+            return 3  # überschlagen / complex
         for angle in angles:
             if angle > 180:
                 return 2  # konkav
@@ -375,7 +375,7 @@ class Polygon:
         while True:
             next = (i + 1) % n
 
-            if(self.points[i].y == p.y):
+            if (self.points[i].y == p.y):
                 decrease += 1
 
             # Check if the line segment from 'p' to

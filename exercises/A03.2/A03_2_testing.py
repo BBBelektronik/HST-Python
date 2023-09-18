@@ -1,4 +1,5 @@
 from A03_2_solution import *
+import math
 
 
 def test():
@@ -11,8 +12,8 @@ def test():
         b = Point(2, -3)
         c = Point(0, 0)
         d = Point(-2, 0)
-    except Exception:
-        print("[ERROR] Point()")
+    except Exception as e:
+        print(f"[EXPTN] Point(): {e}")
     else:
         print("[ OK  ] Point()")
         score += 1
@@ -27,9 +28,9 @@ def test():
             print("[ OK  ] randomize()")
             score += 1
         else:
-            print("[ERROR] randomize()")
-    except Exception:
-        print("[ERROR] randomize")
+            print("[C-ERR] randomize()")
+    except Exception as e:
+        print(f"[EXPTN] randomize: {e}")
     finally:
         num_tests += 1
 
@@ -41,9 +42,9 @@ def test():
             print("[ OK  ] set_x/y & get_x/y")
             score += 1
         else:
-            print("[ERROR] set_x/y & get_x/y")
-    except Exception:
-        print("[ERROR] set/get x/y")
+            print("[C-ERR] set_x/y & get_x/y")
+    except Exception as e:
+        print(f"[EXPTN] set/get x/y: {e}")
     finally:
         num_tests += 1
 
@@ -53,9 +54,9 @@ def test():
             print("[ OK  ] get_length()")
             score += 1
         else:
-            print("[ERROR] get_length()")
-    except Exception:
-        print("[ERROR] get_length")
+            print("[C-ERR] get_length()")
+    except Exception as e:
+        print(f"[EXPTN] get_length: {e}")
     finally:
         num_tests += 1
 
@@ -65,9 +66,9 @@ def test():
             print("[ OK  ] get_distance()")
             score += 1
         else:
-            print("[ERROR] get_distance()")
-    except Exception:
-        print("[ERROR] get_distance")
+            print(f"[C-ERR] get_distance(): {a.get_distance(d)} instead of 2")
+    except Exception as e:
+        print(f"[EXPTN] get_distance: {e}")
     finally:
         num_tests += 1
 
@@ -77,37 +78,49 @@ def test():
             print("[ OK  ] get_quadrant()")
             score += 1
         else:
-            print("[ERROR] get_quadrant()")
-    except Exception:
-        print("[ERROR] get_quadrant")
+            print("[C-ERR] get_quadrant()")
+    except Exception as e:
+        print(f"[EXPTN] get_quadrant: {e}")
     finally:
         num_tests += 1
 
     try:
-        # Test get_angle
+        # Test get_angle(c)
         if round(b.get_angle(c), 1) == round(math.degrees(math.atan2(2 - (-3), 3 - 2)), 1):
-            print("[ OK  ] get_angle")
+            print(f"[ OK  ] get_angle(c)")
             score += 1
         else:
-            print("[ERROR] get_angle")
-    except Exception:
-        print("[ERROR] get_angle")
+            print(
+                f"[C-ERR] get_angle(c): {round(b.get_angle(c), 1)} instead of {round(math.degrees(math.atan2(2 - (-3), 3 - 2)), 1)}")
+    except Exception as e:
+        print(f"[EXPTN] get_angle(c): {e}")
     finally:
         num_tests += 1
+    print("or")
+    try:
+        # Test get_angle, in case of misunderstanding in class (don't add to num_tests)
+        # Test for negative angles as well
+        if round(b.get_angle(), 1) == round(math.degrees(math.atan2(-3, 2)), 1) or round(b.get_angle(), 1) == round(math.degrees(math.atan2(-3, 2)), 1) + 360:
+            print("[ OK  ] get_angle()")
+            score += 1
+        else:
+            print(
+                f"[C-ERR] get_angle(): {round(b.get_angle(), 1)} instead of {round(math.degrees(math.atan2(-3, 2)), 1)}")
+    except Exception as e:
+        print(f"[EXPTN] get_angle(): {e}")
+    # finally:
+    #     num_tests += 1
 
-    print(f"POINT: {round(score/num_tests * 100)}%")
+    point_score = round(score/num_tests * 100)
+    print(f"POINT: {point_score}%")
 
     print("\n### POLYGON BASIC TESTING ###")
     score, num_tests = 0, 0
 
     try:
         poly = Polygon()
-        poly.add_point(Point(-2, -2))
-        poly.add_point(Point(2, -3))
-        poly.add_point(Point(3, 2))
-        poly.add_point(Point(-2, 0))
-    except Exception:
-        print("[ERROR] Polygon()")
+    except Exception as e:
+        print(f"[EXPTN] Polygon(): {e}")
     else:
         print("[ OK  ] Polygon()")
         score += 1
@@ -116,25 +129,30 @@ def test():
 
     try:
         # Test add_point
+        poly.add_point(Point(-2, -2))
+        poly.add_point(Point(2, -3))
+        poly.add_point(Point(3, 2))
+        poly.add_point(Point(-2, 0))
         if len(poly.points) == 4:
             print("[ OK  ] add_point")
             score += 1
         else:
-            print("[ERROR] add_point")
-    except Exception:
-        print("[ERROR] add_point")
+            print(f"[C-ERR] add_point: {len(poly.points)} instead of 4")
+    except Exception as e:
+        print(f"[EXPTN] add_point: {e}")
     finally:
         num_tests += 1
 
     try:
         # Test get_num_points
-        if len(poly.points) == poly.get_num_points():
+        if poly.get_num_points() == 4:
             print("[ OK  ] get_num_points")
             score += 1
         else:
-            print("[ERROR] get_num_points")
-    except Exception:
-        print("[ERROR] get_num_points")
+            print(
+                f"[C-ERR] get_num_points: {poly.get_num_points()} instead of 4")
+    except Exception as e:
+        print(f"[EXPTN] get_num_points: {e}")
     finally:
         num_tests += 1
 
@@ -144,9 +162,10 @@ def test():
             print("[ OK  ] get_circumference")
             score += 1
         else:
-            print("[ERROR] get_circumference")
-    except Exception:
-        print("[ERROR] get_circumference")
+            print(
+                f"[C-ERR] get_circumference: {round(poly.get_circumference(), 1)} instead of 16.6")
+    except Exception as e:
+        print(f"[EXPTN] get_circumference: {e}")
     finally:
         num_tests += 1
 
@@ -156,73 +175,83 @@ def test():
             print("[ OK  ] get_longest_side")
             score += 1
         else:
-            print("[ERROR] get_longest_side")
-    except Exception:
-        print("[ERROR] get_longest_side")
+            print(
+                f"[C-ERR] get_longest_side: {round(poly.get_longest_side(), 1)} instead of 5.4")
+    except Exception as e:
+        print(f"[EXPTN] get_longest_side: {e}")
     finally:
         num_tests += 1
 
     try:
         # Test clear_points
         # TEST IN THE END!!!
-        poly2 = Polygon()
-        poly2.add_point(Point(0, 1))
-        poly2.add_point(Point(2, 3))
-        poly2.add_point(Point(5, 3))
-        poly2.clear_points()
-        if len(poly2.points) == 0:
+        poly_no_unique_points = Polygon()
+        poly_no_unique_points.add_point(Point(0, 1))
+        poly_no_unique_points.add_point(Point(2, 3))
+        poly_no_unique_points.add_point(Point(5, 3))
+        poly_no_unique_points.clear_points()
+        if len(poly_no_unique_points.points) == 0:
             print("[ OK  ] clear_points")
             score += 1
         else:
-            print("[ERROR] clear_points")
-    except Exception:
-        print("[ERROR] clear_points")
+            print("[C-ERR] clear_points")
+    except Exception as e:
+        print(f"[EXPTN] clear_points: {e}")
     finally:
         num_tests += 1
 
-    print(f"POLYGON: {round(score/num_tests * 100)}%")
+    poly_basic_score = round(score/num_tests * 100)
+    print(f"POLYGON BASIC: {poly_basic_score}%")
 
     print("\n### POLYGON ADVANCED TESTING ###")
     score, num_tests = 0, 0
 
     # Test-Polygon 2
-    poly2 = Polygon()
-    poly2.add_point(Point(0, 1))
-    poly2.add_point(Point(2, 3))
-    poly2.add_point(Point(5, 3))
-    poly2.add_point(Point(2, 3))
+    poly_no_unique_points = Polygon()
+    poly_no_unique_points.add_point(Point(0, 1))
+    poly_no_unique_points.add_point(Point(2, 3))
+    poly_no_unique_points.add_point(Point(5, 3))
+    poly_no_unique_points.add_point(Point(2, 3))
 
-    # Test-Polygon 3
+    # Test-Polygon 3, Area = 8.625
     poly3 = Polygon()
     poly3.add_point(Point(0, 0))
     poly3.add_point(Point(2, 0))
-    poly3.add_point(Point(3, 3))
-    poly3.add_point(Point(1, 1))
-    poly3.add_point(Point(0, 3))
+    poly3.add_point(Point(2.5, 2.5))
+    poly3.add_point(Point(0, 3.5))
+    poly3.add_point(Point(-1, 2))
+
+    # Test-Polygon 4, complex, Area = 1.6, has 4 points
+    poly4 = Polygon()
+    poly4.add_point(Point(4.2, 0.2))
+    poly4.add_point(Point(5.8, 1.8))
+    poly4.add_point(Point(4, 2))
+    poly4.add_point(Point(5.8, 0.2))
 
     try:
         # Test has_unique_points()
-        if poly.has_unique_points() == True and poly2.has_unique_points() == False:
+        if poly.has_unique_points() == True and poly_no_unique_points.has_unique_points() == False:
             print("[ OK  ] has_unique_points")
             score += 1
         else:
-            print("[ERROR] has_unique_points")
-    except Exception:
-        print("[ERROR] has_unique_points")
+            print("[C-ERR] has_unique_points")
+    except Exception as e:
+        print(f"[EXPTN] has_unique_points: {e}")
     finally:
         num_tests += 1
 
-    # try:
-    #     # Test get_area()
-    #     if round(poly.get_area(), 1) == 15.5:
-    #         print("[ OK  ] get_area")
-    #         score += 1
-    #     else:
-    #         print("[ERROR] get_area")
-    # except Exception:
-    #     print("[ERROR] get_area")
-    # finally:
-    #     num_tests += 1
+    try:
+        # Test get_area()
+        if round(poly3.get_area(), 1) == 8.6:
+            print("[ OK  ] get_area")
+            score += 1
+        else:
+            print(
+                f"[C-ERR] get_area: {round(poly3.get_area(), 1)} instead of 8.6")
+    except Exception as e:
+        print(f"[EXPTN] get_area: {e}")
+    finally:
+        num_tests += 1
 
     # try:
     #     # Test is_regular()
@@ -230,11 +259,24 @@ def test():
     #         print("[ OK  ] is_regular")
     #         score += 1
     #     else:
-    #         print("[ERROR] is_regular")
-    # except Exception:
-    #     print("[ERROR] is_regular")
+    #         print("[C-ERR] is_regular")
+    # except Exception as e:
+    #     print(f"[EXPTN] is_regular: {e}")
     # finally:
     #     num_tests += 1
+
+    # Calculate if polygon advanced testing score is bigger than
+    poly_adv_score = round(score/num_tests * 100)
+    print(f"POLYGON ADVANCED: {poly_adv_score}%")
+
+    # Print score summary
+    print()
+    print("### SCORE SUMMARY ###")
+    print(f"POINT:       {point_score}%")
+    print(f"POLYGON BAS: {poly_basic_score}%")
+    print(f"POLYGON ADV: {poly_adv_score}%")
+
+    print()
 
 
 test()
