@@ -1,4 +1,4 @@
-from A03_2_solution import *
+from A03_2_solution import Point, Polygon
 import math
 
 
@@ -74,11 +74,12 @@ def test():
 
     try:
         # Test get_quadrant
-        if a.get_quadrant() == 3 and b.get_quadrant() == 4 and c.get_quadrant() == 1:
+        if a.get_quadrant() == 3 and b.get_quadrant() == 4 and d.get_quadrant() == 0:
             print("[ OK  ] get_quadrant()")
             score += 1
         else:
-            print("[C-ERR] get_quadrant()")
+            print(
+                f"[C-ERR] get_quadrant(): {a.get_quadrant()}, {b.get_quadrant()}, {d.get_quadrant()} instead of 3, 4, 0")
     except Exception as e:
         print(f"[EXPTN] get_quadrant: {e}")
     finally:

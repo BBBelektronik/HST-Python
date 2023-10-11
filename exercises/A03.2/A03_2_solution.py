@@ -46,7 +46,9 @@ class Point:
     def get_quadrant(self):
         # Gibt als Integer zurück, in welchem Quadranten des Koordinatensystems sich der Punkt befindet.
         # Gibt 0 zurück, wenn der Punkt sich genau auf einer Achse befindet.
-        if self.x > 0:
+        if self.x == 0 or self.y == 0:
+            return 0
+        elif self.x > 0:
             if self.y > 0:
                 return 1
             elif self.y < 0:
