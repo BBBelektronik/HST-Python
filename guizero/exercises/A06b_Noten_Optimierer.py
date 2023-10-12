@@ -1,7 +1,7 @@
 # Function to update text widgets
 
 
-from guizero import App, Slider, Text, TitleBox, Box, CheckBox, PushButton
+from guizero import App, Slider, Text, TitleBox, Box, CheckBox, PushButton, MenuBar, info, Window, ButtonGroup
 
 
 def update_text1():
@@ -86,7 +86,63 @@ def enable_slider(slider, check):
     calc_avg()
 
 
+def menubar_about():
+    info("Über", "Noten-Optimierer\nVersion 0.01\n\n(c) 2023 by Schico Nwab")
+
+
+def menubar_bugreport():
+    info("Bug melden", "Wer einen Fehler findet, kann ihn behalten ;-)")
+
+
+def menubar_whosthebest():
+    '''
+    Opens a new Window with a dropdown menu to select the best person (Choices A, B and C).
+    Upon selecting the correct preset value (A), all sliders are set to 60.
+    '''
+    def select_best():
+        winpop.destroy()
+        choice = bestselect.value
+        sliders = [slider1, slider2, slider3, slider4, slider5]
+        old_values = [slider.value for slider in sliders]
+        for i, slider in enumerate(sliders):
+            slider.enable()
+            print(f"Choice: {choice}")
+            if choice == "scn":
+                slider.value = 60
+            else:
+                slider.value = 10
+            if old_values[i] == False:
+                slider.disable()
+            else:
+                slider.enable()
+        if choice == "scn":
+            app.info("Gute Wahl!",
+                     "Gute Wahl!\n\n Alle Noten wurden auf 6.0 gesetzt.")
+        else:
+            app.warn("Schlechte Wahl!",
+                     "Schlechte Wahl!\n\n Alle Noten wurden auf 1.0 gesetzt.")
+
+    winpop = Window(app, title="Who's the best?", width=150,
+                    height=150, layout="grid")
+
+    box = Box(winpop, grid=[0, 0], layout="grid")
+    lbl = Text(box, text="Wer ist der Beste?", grid=[0, 0, 2, 1])
+    choices = [["Schico Nwab", "scn"], [
+        "Baniel Dürigi", "bud"], ["Mürt Kuller", "muk"]]
+    bestselect = ButtonGroup(box, options=choices, selected=None, grid=[
+        0, 1])
+    btn = PushButton(box, text="OK", grid=[1, 1], command=select_best)
+
+
 app = App(title="Noten-Optimierer", width=210, height=290, layout="grid")
+menubar = MenuBar(app,
+                  toplevel=["Datei", "Hilfe"],
+                  options=[
+                      [["Beenden", app.destroy]],
+                      [["Who's the best?", menubar_whosthebest], [
+                          "Bug melden", menubar_bugreport], ["Über", menubar_about]],
+                  ])
+
 sliderbox = TitleBox(app, text="Noten", grid=[0, 0, 2, 1],
                      width="fill", height="fill", layout="grid")
 
