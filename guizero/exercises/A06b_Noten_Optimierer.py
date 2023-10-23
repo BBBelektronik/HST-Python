@@ -103,10 +103,9 @@ def menubar_whosthebest():
         winpop.destroy()
         choice = bestselect.value
         sliders = [slider1, slider2, slider3, slider4, slider5]
-        old_values = [slider.value for slider in sliders]
+        old_values = [slider.enabled for slider in sliders]
         for i, slider in enumerate(sliders):
             slider.enable()
-            print(f"Choice: {choice}")
             if choice == "scn":
                 slider.value = 60
             else:
