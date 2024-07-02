@@ -1,12 +1,31 @@
 import guizero as gz
 import serial
+import serial.tools.list_ports
 import time
+import pysine
 
-config = {"ser": serial.Serial(), "connected": False}
+config = {"ser": serial.Serial(), "connected": False, "baudrate": 9600, "timeout": 1}
 
+def list_ports():
+    ports = []
+    for port in serial.tools.list_ports.comports():
+        ports.append(port.name)
+    print(ports)
+    return ports
 def connect():
-    config["ser"] = serial.Serial("COM" + str(sl_comport.value), 9600, timeout=1)
+    config["ser"] = serial.Serial("COM" + str(sl_comport.value), config["baudrate"], timeout=config["timeout"])
     config["connected"] = True
+    bt_auto_connect.disable()
+    bt_disconnect.enable()
+    bt_read.enable()
+    bt_connect.disable()
+    sl_comport.disable()
+
+def auto_connect():
+    port = list_ports()[0]
+    config["ser"] = serial.Serial(port, config["baudrate"], timeout=config["timeout"])
+    config["connected"] = True
+    bt_auto_connect.disable()
     bt_disconnect.enable()
     bt_read.enable()
     bt_connect.disable()
@@ -19,13 +38,18 @@ def disconnect():
     bt_read.disable()
     bt_disconnect.disable()
     sl_comport.enable()
+    bt_auto_connect.enable()
 
+def clean_up():
+    print("Cleaning up")
+    config["ser"].close()
+    app.destroy()
 
 def read_distance():
     if config["connected"]:
         config["ser"].write(bytes([0xA0]))
         # wait for 100 ms
-        time.sleep(0.1)
+        # time.sleep(50e-3)
         # read 3 bytes from sensor
         out = config["ser"].read(3)
         # Calculate distance based on received bytes
@@ -38,6 +62,8 @@ def read_distance():
         else:
             sl_out.value = int(round(distance))
             tb_out.value = f"Distance: {distance:.0f}cm"
+            pysine.sine(int(round(distance * 5)), 0.1)
+
 
 
 app = gz.App("Distance Display")
@@ -58,14 +84,17 @@ controlbox = gz.TitleBox(boxleft, "Control", align="top", width="fill", height="
 
 
 # Connect/Read
+bt_listports = gz.PushButton(controlbox, text="List COM-Ports", width="fill", align="top", command=list_ports)
 bt_connect = gz.PushButton(controlbox, text="Connect", width="fill", align="top", command=connect)
+bt_auto_connect = gz.PushButton(controlbox, text="Auto-Connect", width="fill", align="top", command=auto_connect)
 bt_disconnect = gz.PushButton(controlbox, text="Disconnect", width="fill", align="top", command=disconnect, enabled=False)
 bt_read = gz.PushButton(controlbox, text="Read", width="fill", align="top", command=read_distance, enabled=False)
-bt_read.repeat(200, read_distance)
+bt_read.repeat(100, read_distance)
 
 # Output
 tb_out = gz.Text(boxright, width="fill", height="fill", enabled=False)
 sl_out = gz.Slider(boxright, width="fill", start=2, end=100, enabled=True)
 
+app.when_closed = clean_up
 
 app.display()
